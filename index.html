@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E No. 03 with D3</title>
+    
+</head>
+
+<body>
+    <p>Beginning steps: all about the console!</p>
+    <div id="firstDiv"></div>
+    <script type="module">
+        import AnalyzableImage from "./analyzable-image.js";
+        import {d3} from "./analyzable-image.js";
+
+        let saul = "./saul.jpg";
+        let ns = new AnalyzableImage(saul, "new saul");
+        let np = ns.loadImage(200);
+        await np;
+        console.log(`After the promise: ${ns} size ${ns.image.width}x${ns.image.height}`);
+        document.body.appendChild(ns.image);
+        ns.buildColorData();
+        ns.describe();
+        ns.calculateSummaryStatistics();
+        await ns.calculateKMeans(8, 40, 0.4);
+        ns.reviewHistory();
+        //ns.clusterDistances();
+        ns.calculateClusterDistranceMatrix();
+        console.log("pause inside html");
+        //debugger;
+    </script>
+</body>
+
+</html>
